@@ -4,6 +4,7 @@ import com.url.shortener.dtos.ClickEventDTO;
 import com.url.shortener.dtos.UrlMappingDTO;
 import com.url.shortener.models.UrlMapping;
 import com.url.shortener.models.User;
+import com.url.shortener.requesturl.RequestURLs;
 import com.url.shortener.service.UrlMappingService;
 import com.url.shortener.service.UserService;
 import lombok.AllArgsConstructor;
@@ -53,7 +54,7 @@ public class UrlMappingController {
         return ResponseEntity.ok(clickEventDTOS);
     }
 
-    @GetMapping("/totalClicks")
+    @GetMapping(RequestURLs.TOTAL_CLICKS)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Map<LocalDate,Long>> getTotalClicksByDate(Principal principal,@RequestParam("startDate") String startDate,
                                                                     @RequestParam("endDate") String endDate){
